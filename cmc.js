@@ -11,7 +11,7 @@ var apps = fs.readdirSync("templates").reduce(function (acc, filename) {
 }, {});
 
 var appName = process.argv[2];
-var options = JSON.parse(fs.readFileSync(process.argv[4], "utf8"));
+var options = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
 
 var dockerfile = _.template(apps[appName], options);
 var imageName = appName + "-" + options.checkoutCommit;
