@@ -5,7 +5,7 @@ var mkdirp = require("mkdirp");
 
 var apps = fs.readdirSync("templates").reduce(function (acc, filename) {
 	if (filename.slice(-4) === ".dft") {
-		acc[filename] = fs.readFileSync(filename, "utf8");
+		acc[filename.slice(0, -4)] = fs.readFileSync(filename, "utf8");
 	}
 	return acc;
 }, {});
