@@ -1,0 +1,11 @@
+# Dockerfile template for the meteor-website app
+FROM meteor-website
+RUN cd /meteor-website && git pull
+RUN cd /meteor-website && git checkout {{checkoutCommit}}
+RUN cd /meteor-website && meteor bundle /bundle.tgz
+RUN tar xvzf /bundle.tgz
+ENV MONGO_URL {{mongoUrl}}
+ENV ROOT_URL {{rootUrl}}
+ENV PORT 3000
+EXPOSE 3000
+ENTRYPOINT ["node", "/bundle/main.js"]

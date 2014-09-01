@@ -1,0 +1,10 @@
+# Dockerfile template for the mnd-website app
+FROM mnd-website
+WORKDIR /mnd-website
+RUN git pull
+RUN git checkout {{checkoutCommit}}
+RUN npm update
+RUN bower update --allow-root
+RUN gulp buildWeb
+EXPOSE 8080
+ENTRYPOINT ["static", "/mnd-website/builds/web/"]
