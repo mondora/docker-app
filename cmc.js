@@ -19,7 +19,7 @@ var dirName = "apps/" + imageName;
 mkdirp.sync(dirName);
 fs.writeFileSync(dirName + "/Dockerfile", dockerfile, "utf8");
 
-var buildCommand = "docker build -t " + imageName + " .";
+var buildCommand = "docker build -t " + imageName + " apps/" + imageName;
 var runCommand = "docker run " + imageName;
 
 console.log("Running:");
