@@ -29,6 +29,7 @@ var buildArgs = [
 ];
 var runArgs = [
 	"run",
+	"-d",
 	imageName
 ];
 
