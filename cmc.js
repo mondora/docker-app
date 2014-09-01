@@ -13,7 +13,7 @@ var apps = fs.readdirSync("templates").reduce(function (acc, filename) {
 var appName = process.argv[2];
 var options = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
 
-var dockerfile = _.template(apps[appName])(options);
+var dockerfile = _.template(apps[appName], options, {interpolate: /{{([\s\S]+?)}}/g});
 var imageName = appName + "-" + options.checkoutCommit;
 var dirName = "apps/" + imageName;
 mkdirp.sync(dirName);
