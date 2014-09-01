@@ -2,6 +2,7 @@
 FROM meteor-website
 RUN cd /meteor-website && git pull
 RUN cd /meteor-website && git checkout {{checkoutCommit}}
+RUN cd /meteor-website && mrt install
 RUN cd /meteor-website && meteor bundle /bundle.tgz
 RUN tar xvzf /bundle.tgz
 ENV MONGO_URL {{mongoUrl}}
