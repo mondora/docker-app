@@ -2,6 +2,8 @@ var _ = require("lodash");
 var exec = require("child_process").exec;
 var fs = require("fs");
 var mkdirp = require("mkdirp");
+var spawn = require('child_process').spawn;
+
 
 var apps = fs.readdirSync("templates").reduce(function (acc, filename) {
 	if (filename.slice(-4) === ".dft") {
@@ -19,20 +21,36 @@ var dirName = "apps/" + imageName;
 mkdirp.sync(dirName);
 fs.writeFileSync(dirName + "/Dockerfile", dockerfile, "utf8");
 
-var buildCommand = "docker build -t " + imageName + " apps/" + imageName;
-var runCommand = "docker run " + imageName;
+var buildArgs = [
+	"build",
+	"-t",
+	imageName,
+	"apps/" + imageName
+];
+var runArgs = [
+	"run",
+	imageName
+];
 
-console.log("Running:");
-console.log(buildCommand);
-exec(buildCommand, function (error) {
-	if (error) {
-		throw new Error(error);
-	}
-	console.log("Running:");
-	console.log(runCommand);
-	exec(runCommand, function (error) {
-		if (error) {
-			throw new Error(error);
-		}
+console.log("Building image");
+var build = spawn("docker", buildArgs);
+build.stdout.on("data", function (data) {
+	console.log("stdout: " + data);
+});
+build.stderr.on("data", function (data) {
+	console.log("stderr: " + data);
+});
+build.on("close", function (code) {
+	console.log("Build finished");
+	console.log("Running");
+	var run = spawn("docker", runArgs);
+	run.stdout.on("data", function (data) {
+		console.log("stdout: " + data);
+	});
+	run.stderr.on("data", function (data) {
+		console.log("stderr: " + data);
+	});
+	run.on("close", function (code) {
+		console.log("Run finished");
 	});
 });
