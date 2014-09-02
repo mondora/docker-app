@@ -5,7 +5,9 @@ RUN cd /meteor-website && git checkout {{checkoutCommit}}
 RUN cd /meteor-website && mrt install
 RUN cd /meteor-website && meteor bundle /bundle.tgz
 RUN tar xvzf /bundle.tgz
+ENV PORT {{port}}
 ENV MONGO_URL {{mongoUrl}}
 ENV ROOT_URL {{rootUrl}}
-ENV PORT {{port}}
+ENV MAIL_URL {{mailUrl}}
+ENV DOOR_OPENER_TOKEN {{doorOpenerToken}}
 ENTRYPOINT node /bundle/main.js
