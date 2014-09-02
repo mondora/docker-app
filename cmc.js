@@ -31,7 +31,7 @@ var runArgs = [
 	"run",
 	"-d",
 	"-p",
-	options.externalPort + ":" + options.externalPort,
+	options.port + ":" + options.port,
 	imageName
 ];
 

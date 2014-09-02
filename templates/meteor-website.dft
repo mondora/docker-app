@@ -7,6 +7,5 @@ RUN cd /meteor-website && meteor bundle /bundle.tgz
 RUN tar xvzf /bundle.tgz
 ENV MONGO_URL {{mongoUrl}}
 ENV ROOT_URL {{rootUrl}}
-ENV PORT 3000
-EXPOSE 3000
+ENV PORT {{port}}
 ENTRYPOINT node /bundle/main.js
