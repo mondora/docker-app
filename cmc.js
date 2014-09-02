@@ -31,6 +31,8 @@ var buildArgs = [
 var runArgs = [
 	"run",
 	"-d",
+	"-p",
+	options.externalPort,
 	imageName
 ];
 
