@@ -7,9 +7,9 @@ RUN cd /meteor-website && meteor bundle /bundle.tgz
 RUN tar xvzf /bundle.tgz
 ADD ssh-key.pem /ssh-key.pem
 RUN chmod 600 /ssh-key.pem
-RUN ssh -L 27017:localhost:27017 -i /ssh-key.pem ubuntu@{{mongoServerDomainName}}
+RUN 
 ENV MONGO_URL mongodb://localhost:27017/mondora
 ENV ROOT_URL {{rootUrl}}
 ENV PORT 3000
 EXPOSE 3000
-ENTRYPOINT ["node", "/bundle/main.js"]
+ENTRYPOINT ssh -L 27017:localhost:27017 -i /ssh-key.pem ubuntu@{{mongoServerDomainName}} && node /bundle/main.js
