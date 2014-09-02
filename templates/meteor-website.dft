@@ -6,6 +6,7 @@ RUN cd /meteor-website && mrt install
 RUN cd /meteor-website && meteor bundle /bundle.tgz
 RUN tar xvzf /bundle.tgz
 ADD ssh-key.pem /ssh-key.pem
+RUN chmod 600 /ssh-key.pem
 RUN ssh -L 27017:localhost:27017 -i /ssh-key.pem ubuntu@{{mongoServerDomainName}}
 ENV MONGO_URL mongodb://localhost:27017/mondora
 ENV ROOT_URL {{rootUrl}}
