@@ -7,7 +7,6 @@ RUN cd /meteor-website && meteor bundle /bundle.tgz
 RUN tar xvzf /bundle.tgz
 ADD ssh-key.pem /ssh-key.pem
 RUN chmod 600 /ssh-key.pem
-RUN 
 ENV MONGO_URL mongodb://localhost:27017/mondora
 ENV ROOT_URL {{rootUrl}}
 ENV PORT 3000
