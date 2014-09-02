@@ -19,7 +19,6 @@ var dockerfile = _.template(apps[appName], options, {interpolate: /{{([\s\S]+?)}
 var imageName = appName + "-" + options.checkoutCommit;
 var dirName = "apps/" + imageName;
 mkdirp.sync(dirName);
-fs.writeFileSync(dirName + "/ssh-key.pem", fs.readFileSync("ssh-key.pem"));
 fs.writeFileSync(dirName + "/Dockerfile", dockerfile, "utf8");
 
 var buildArgs = [
