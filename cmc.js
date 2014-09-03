@@ -1,9 +1,8 @@
-var _ = require("lodash");
-var exec = require("child_process").exec;
-var fs = require("fs");
-var mkdirp = require("mkdirp");
-var spawn = require('child_process').spawn;
-
+var _		= require("lodash");
+var exec	= require("child_process").exec;
+var fs		= require("fs");
+var mkdirp	= require("mkdirp");
+var spawn	= require("child_process").spawn;
 
 var apps = fs.readdirSync("templates").reduce(function (acc, filename) {
 	if (filename.slice(-4) === ".dft") {
@@ -31,6 +30,8 @@ var runArgs = [
 	"run",
 	"-d",
 	"-p",
+	"--name",
+	imageName,
 	options.port + ":" + options.port,
 	imageName
 ];
