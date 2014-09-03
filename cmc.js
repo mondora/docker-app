@@ -29,9 +29,9 @@ var buildArgs = [
 var runArgs = [
 	"run",
 	"-d",
-	"-p",
 	"--name",
 	imageName,
+	"-p",
 	options.port + ":" + options.port,
 	imageName
 ];
