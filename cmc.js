@@ -30,7 +30,7 @@ var runArgs = [
 	"run",
 	"-d",
 	"--name",
-	imageName,
+	appName,
 	"-p",
 	options.port + ":" + options.port,
 	imageName
