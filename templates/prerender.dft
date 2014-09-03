@@ -1,0 +1,8 @@
+# Dockerfile template for the prerender app
+FROM prerender
+ENV PORT {{port}}
+ENV AWS_ACCESS_KEY_ID {{awsAccessKeyId}}
+ENV AWS_SECRET_ACCESS_KEY {{awsSecretAccessKey}}
+ENV S3_BUCKET_NAME {{s3BucketName}}
+ENV S3_PREFIX_KEY {{s3PrefixKey}}
+ENTRYPOINT ["node", "/prerender/server.js"]

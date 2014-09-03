@@ -10,4 +10,4 @@ ENV MONGO_URL {{mongoUrl}}
 ENV ROOT_URL {{rootUrl}}
 ENV MAIL_URL {{mailUrl}}
 ENV DOOR_OPENER_TOKEN {{doorOpenerToken}}
-ENTRYPOINT node /bundle/main.js
+ENTRYPOINT ["node", "/bundle/main.js"]
