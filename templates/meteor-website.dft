@@ -10,4 +10,9 @@ ENV MONGO_URL {{mongoUrl}}
 ENV ROOT_URL {{rootUrl}}
 ENV MAIL_URL {{mailUrl}}
 ENV DOOR_OPENER_TOKEN {{doorOpenerToken}}
+ENV SENDER_EMAIL {{senderEmail}}
+ENV ALLOWED_ORIGIN {{allowedOrigin}}
+ENV READABILITY_TOKEN {{readabilityToken}}
+ENV KADIRA_APP_ID {{kadiraAppId}}
+ENV KADIRA_APP_SECRET {{kadiraAppSecret}}
 ENTRYPOINT ["node", "/bundle/main.js"]
