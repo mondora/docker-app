@@ -27,6 +27,14 @@ var buildArgs = [
 	imageName,
 	"apps/" + imageName
 ];
+var stopArgs = [
+	"stop",
+	appName
+];
+var rmArgs = [
+	"stop",
+	appName
+];
 var runArgs = [
 	"run",
 	"-d",
@@ -47,15 +55,20 @@ build.stderr.on("data", function (data) {
 });
 build.on("close", function (code) {
 	console.log("Build finished");
-	console.log("Running");
-	var run = spawn("docker", runArgs);
-	run.stdout.on("data", function (data) {
-		console.log("stdout: " + data);
-	});
-	run.stderr.on("data", function (data) {
-		console.log("stderr: " + data);
-	});
-	run.on("close", function (code) {
-		console.log("Run finished");
+	console.log("Stopping");
+	var stop = spawn("docker", stopArgs);
+	stop.on("close", function () {
+		console.log("Removing");
+		var rm = spawn("docker", rmArgs);
+		rm.on("close", function () {
+			console.log("Running");
+			var run = spawn("docker", runArgs);
+			run.stdout.on("data", function (data) {
+				console.log(data);
+			});
+			run.on("close", function (code) {
+				console.log("Run finished");
+			});
+		});
 	});
 });
