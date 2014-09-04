@@ -22,6 +22,7 @@ fs.writeFileSync(dirName + "/Dockerfile", dockerfile, "utf8");
 
 var buildArgs = [
 	"build",
+	"--no-cache",
 	"-t",
 	imageName,
 	"apps/" + imageName
