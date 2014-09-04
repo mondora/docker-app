@@ -2,7 +2,7 @@
 FROM mnd-website
 WORKDIR /mnd-website
 RUN git pull
-RUN git checkout {{checkoutCommit}}
+RUN git checkout {{checkout}}
 RUN npm update
 RUN bower update --allow-root
 RUN gulp {{buildCommand}}
