@@ -6,5 +6,4 @@ RUN git checkout {{checkout}}
 RUN npm update
 RUN bower update --allow-root
 RUN gulp {{buildCommand}}
-EXPOSE 8080
 ENTRYPOINT ["static", "/mnd-website/builds/web/"]
