@@ -4,6 +4,7 @@ RUN cd /meteor-website && git pull
 RUN cd /meteor-website && git checkout {{checkout}}
 RUN cd /meteor-website && meteor bundle /bundle.tgz
 RUN tar xvzf /bundle.tgz
+RUN cd /bundle/programs/server && npm install
 ENV PORT {{port}}
 ENV MONGO_URL {{mongoUrl}}
 ENV ROOT_URL {{rootUrl}}
