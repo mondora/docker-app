@@ -5,3 +5,4 @@ FROM dockerfile/nodejs
 MAINTAINER Paolo Scanferla <paolo.scanferla@mondora.com>
 RUN curl https://install.meteor.com/ | sh
 RUN git clone https://github.com/mondora/meteor-website.git
+WORKDIR /

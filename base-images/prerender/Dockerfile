@@ -3,6 +3,7 @@
 # mnd-website application
 FROM dockerfile/nodejs
 MAINTAINER Paolo Scanferla <paolo.scanferla@mondora.com>
+WORKDIR /
 RUN git clone https://github.com/prerender/prerender.git
 ADD server.js /prerender/server.js
 RUN cd /prerender && npm install
