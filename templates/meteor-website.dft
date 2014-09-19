@@ -15,4 +15,5 @@ ENV ALLOWED_ORIGIN {{allowedOrigin}}
 ENV READABILITY_TOKEN {{readabilityToken}}
 ENV KADIRA_APP_ID {{kadiraAppId}}
 ENV KADIRA_APP_SECRET {{kadiraAppSecret}}
+ENV DISABLE_WEBSOCKETS {{disableWebsockets}}
 ENTRYPOINT ["node", "/bundle/main.js"]
